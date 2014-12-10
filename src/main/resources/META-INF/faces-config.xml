@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <component>
+        <component-type>org.foundationfaces.component.Panel</component-type>
+        <component-class>org.foundationfaces.component.panel.Panel</component-class>
+    </component>
+    <component>
+        <component-type>org.foundationfaces.component.RevealModal</component-type>
+        <component-class>org.foundationfaces.component.revealmodal.RevealModal</component-class>
+    </component>
+    <render-kit>
+        <renderer>
+            <component-family>org.foundationfaces.component</component-family>
+            <renderer-class>org.foundationfaces.component.revealmodal.RevealModalRenderer</renderer-class>
+            <renderer-type>org.foundationfaces.component.renderer.RevealModalRenderer</renderer-type>
+        </renderer>
+        <renderer>
+            <component-family>org.foundationfaces.component</component-family>
+            <renderer-class>org.foundationfaces.component.panel.PanelRenderer</renderer-class>
+            <renderer-type>org.foundationfaces.component.renderer.PanelRenderer</renderer-type>
+        </renderer>
+    </render-kit>
+</faces-config>

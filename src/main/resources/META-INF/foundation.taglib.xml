@@ -1,0 +1,111 @@
+<facelet-taglib version="2.2"
+                xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd">
+    
+    <composite-library-name>foundation</composite-library-name>
+    <namespace>http://foundation.zurb.com/faces</namespace>
+   
+    <tag>
+        <tag-name>panel</tag-name>
+        <description>Renders a foundation panel</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.Panel
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.PanelRenderer
+            </renderer-type>
+        </component>
+        <attribute>
+            <description><![CDATA[The header of the panel. Can also use the facet "header" for more verbose headings. ]]></description>
+            <name>header</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The style of the panel.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The style class of the panel.]]></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>revealModal</tag-name>
+        <description>Renders a foundation Reveal Modal</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.RevealModal
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.RevealModalRenderer
+            </renderer-type>
+        </component>
+        <attribute>
+            <description><![CDATA[The header of the modal. Can also use the facet "header" for more verbose headings. ]]></description>
+            <name>header</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The style of the modal.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The style class of the modal.]]></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The id of the panel as exposed to foundation. This id is required.]]></description>
+            <name>dataRevealId</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>  
+    <tag>
+        <tag-name>revealModalButton</tag-name>
+        <description>Renders a foundation Reveal Modal Button</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.RevealModalButton
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.RevealModalButtonRenderer
+            </renderer-type>
+        </component>
+        <attribute>
+            <description><![CDATA[The style of the modal.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The style class of the modal.]]></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The label of the button]]></description>
+            <name>label</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The id of the panel to close. This id is required.]]></description>
+            <name>dataRevealId</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>                                          
+</facelet-taglib>
