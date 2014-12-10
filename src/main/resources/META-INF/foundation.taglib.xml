@@ -56,7 +56,6 @@
                 org.foundationfaces.component.renderer.JoyrideStopRenderer
             </renderer-type>
         </component>
-        dataClass
         <attribute>
             <description><![CDATA[The id of the component to stop at]]></description>
             <name>dataId</name>
@@ -81,6 +80,127 @@
             <required>false</required>
             <type>java.lang.String</type>
         </attribute>
+        <attribute>
+            <description><![CDATA[The class of the stop?]]></description>
+            <name>dataClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[turn on or off the expose feature]]></description>
+            <name>expose</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Whether to cover page with modal during the tour]]></description>
+            <name>modal</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[enable left, right and esc keystrokes]]></description>
+            <name>keyboard</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+       <attribute>
+            <description><![CDATA['top' or 'bottom' in relation to parent]]></description>
+            <name>tipLocation</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[override on a per tooltip bases]]></description>
+            <name>nubPosition</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Page scrolling speed in milliseconds, 0 = no scroll animation]]></description>
+            <name>scrollSpeed</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[supports 'swing' and 'linear', extend with jQuery UI.]]></description>
+            <name>scrollAnimation</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[0 = no timer , all other numbers = timer in milliseconds]]></description>
+            <name>timer</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[true or false - true requires clicking the first button start the timer]]></description>
+            <name>startTimerOnClick</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The index of the tooltip you want to start on (index of the li)]]></description>
+            <name>startOffset</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[true or false to control whether a next button is used]]></description>
+            <name>nextButton</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[true or false to control whether a prev button is used]]></description>
+            <name>prevButton</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA['pop' or 'fade' in each tip]]></description>
+            <name>tipAnimation</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[when tipAnimation = 'fade' this is speed in milliseconds for the transition]]></description>
+            <name>tipAnimationFadeSpeed</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[true or false to control whether cookies are used]]></description>
+            <name>cookieMonster</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Name the cookie you'll use]]></description>
+            <name>cookieName</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Will this cookie be attached to a domain, ie. '.notableapp.com']]></description>
+            <name>cookieDomain</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[set when you would like the cookie to expire.]]></description>
+            <name>cookieExpires</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Where will the tip be attached]]></description>
+            <name>tipContainer</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+
     </tag>
     <tag>
         <tag-name>offCanvas</tag-name>
