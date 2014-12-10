@@ -34,6 +34,55 @@
         </attribute>
     </tag>
     <tag>
+        <tag-name>joyride</tag-name>
+        <description>Renders a joyride panel</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.Joyride
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.JoyridelRenderer
+            </renderer-type>
+        </component>
+    </tag>
+    <tag>
+        <tag-name>joyrideStop</tag-name>
+        <description>Renders a single foundation joyride stop</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.JoyrideStop
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.JoyrideStopRenderer
+            </renderer-type>
+        </component>
+        dataClass
+        <attribute>
+            <description><![CDATA[The id of the component to stop at]]></description>
+            <name>dataId</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The label of the proceed button]]></description>
+            <name>dataButton</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The label of the prev. button]]></description>
+            <name>dataPrevText</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[?]]></description>
+            <name>dataText</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+    <tag>
         <tag-name>offCanvas</tag-name>
         <description>Renders a foundation offcanvas menu</description>
         <component>
