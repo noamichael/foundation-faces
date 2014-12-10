@@ -37,6 +37,30 @@
         </attribute>
     </tag>
     <tag>
+        <tag-name>offCanvas</tag-name>
+        <description>Renders a foundation offcanvas menu</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.OffCanvas
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.OffCanvasRenderer
+            </renderer-type>
+        </component>
+        <attribute>
+            <description><![CDATA[The style of the panel.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The style class of the panel.]]></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+    <tag>
         <tag-name>revealModal</tag-name>
         <description>Renders a foundation Reveal Modal</description>
         <component>
