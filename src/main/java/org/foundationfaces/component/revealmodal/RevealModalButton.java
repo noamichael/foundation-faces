@@ -22,7 +22,8 @@ public class RevealModalButton extends UIOutput implements Styled {
 
     public static final String MY_COMPONENT_TYPE = Foundation.COMPONENT_FAMILY + ".RevealModalButton";
     public static final String MY_RENDERER_TYPE = Foundation.RENDERER_TYPE + ".RevealModalButtonRenderer";
-
+    public static final String STYLE_CLASS = "button";
+    
     private String dataRevealId;
     private String styleClass;
     private String style;

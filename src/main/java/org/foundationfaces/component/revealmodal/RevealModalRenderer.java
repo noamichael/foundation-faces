@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 import javax.faces.render.Renderer;
+import org.foundationfaces.component.ComponentUtil;
 import org.foundationfaces.component.Foundation;
 import org.foundationfaces.util.StringUtil;
 
@@ -32,15 +33,10 @@ public class RevealModalRenderer extends Renderer {
     }
 
     protected void encodeModalStart(FacesContext context, ResponseWriter writer, RevealModal revealModal) throws IOException {
-        String sytleClass = StringUtil.isNullOrEmpty(revealModal.getStyleClass()) ? "" : " " + revealModal.getStyleClass();
         writer.startElement("div", revealModal);
-        writer.writeAttribute("class", RevealModal.STYLE_CLASS + sytleClass, null);
+        ComponentUtil.encodeStyledComponent(revealModal, RevealModal.STYLE_CLASS, writer);
         writer.writeAttribute("id", revealModal.getDataRevealId(), null);
         writer.writeAttribute("data-reveal", "data-reveal", null);
-        String style = revealModal.getStyle();
-        if (!StringUtil.isNullOrEmpty(style)) {
-            writer.writeAttribute("style", style, null);
-        }
     }
 
     protected void encodeModalEnd(FacesContext context, ResponseWriter writer, RevealModal revealModal) throws IOException {

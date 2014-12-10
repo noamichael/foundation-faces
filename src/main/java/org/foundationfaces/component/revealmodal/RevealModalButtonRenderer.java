@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 import javax.faces.render.Renderer;
+import org.foundationfaces.component.ComponentUtil;
 import org.foundationfaces.component.Foundation;
 import org.foundationfaces.util.StringUtil;
 
@@ -31,21 +32,14 @@ public class RevealModalButtonRenderer extends Renderer {
     }
 
     protected void encodeButtonStart(FacesContext context, RevealModalButton button, ResponseWriter writer) throws IOException {
-        String styleClass = button.getStyleClass();
-        String style = button.getStyle();
         writer.startElement("a", button);
         writer.writeAttribute("href", "#", null);
-        writer.writeAttribute("class", "button", null);
+        ComponentUtil.encodeStyledComponent(button, RevealModalButton.STYLE_CLASS, writer);
         writer.writeAttribute("data-reveal-id", button.getDataRevealId(), null);
-        if (!StringUtil.isNullOrEmpty(style)) {
-            writer.writeAttribute("style", style, null);
-        }
-        if (!StringUtil.isNullOrEmpty(style)) {
-            writer.writeAttribute("class", styleClass, null);
-        }
-        if(!StringUtil.isNullOrEmpty(button.getLabel())){
+        if (!StringUtil.isNullOrEmpty(button.getLabel())) {
             writer.write(button.getLabel());
         }
+
     }
 
     protected void encodeButtonEnd(FacesContext context, RevealModalButton button, ResponseWriter writer) throws IOException {

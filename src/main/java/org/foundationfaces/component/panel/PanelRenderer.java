@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 import javax.faces.render.Renderer;
+import org.foundationfaces.component.ComponentUtil;
 import org.foundationfaces.component.Foundation;
 import org.foundationfaces.util.StringUtil;
 
@@ -32,14 +33,9 @@ public class PanelRenderer extends Renderer {
     }
 
     protected void encodePanelStart(FacesContext context, ResponseWriter writer, Panel panel) throws IOException {
-        String sytleClass = StringUtil.isNullOrEmpty(panel.getStyleClass()) ? "" : " " + panel.getStyleClass();
         writer.startElement("div", panel);
         writer.writeAttribute("id", panel.getClientId(context), null);
-        writer.writeAttribute("class", Panel.STYLE_CLASS + sytleClass, null);
-        String style = panel.getStyle();
-        if (!StringUtil.isNullOrEmpty(style)) {
-            writer.writeAttribute("style", style, null);
-        }
+        ComponentUtil.encodeStyledComponent(panel, Panel.STYLE_CLASS, writer);
     }
 
     protected void encodePanelEnd(FacesContext context, ResponseWriter writer, Panel panel) throws IOException {

@@ -2,10 +2,7 @@
                 xmlns="http://xmlns.jcp.org/xml/ns/javaee"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd">
-    
-    <composite-library-name>foundation</composite-library-name>
     <namespace>http://foundation.zurb.com/faces</namespace>
-   
     <tag>
         <tag-name>panel</tag-name>
         <description>Renders a foundation panel</description>
@@ -57,6 +54,36 @@
             <description><![CDATA[The style class of the panel.]]></description>
             <name>styleClass</name>
             <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>offCanvasButton</tag-name>
+        <description>Renders a foundation offcanvas toggle menu button</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.OffCanvasButton
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.OffCanvasButtonRenderer
+            </renderer-type>
+        </component>
+        <attribute>
+            <description><![CDATA[The style of the panel.]]></description>
+            <name>style</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The style class of the panel.]]></description>
+            <name>styleClass</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description><![CDATA[The side of the off canvas menu where the button will appear.]]></description>
+            <name>side</name>
+            <required>true</required>
             <type>java.lang.String</type>
         </attribute>
     </tag>

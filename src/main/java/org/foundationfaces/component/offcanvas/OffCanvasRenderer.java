@@ -70,15 +70,15 @@ public class OffCanvasRenderer extends Renderer {
     }
 
     protected void encodeLeftTabMenu(FacesContext context, OffCanvas offCanvas, ResponseWriter writer) throws IOException {
-        encodeTabSection(context, offCanvas, writer, OffCanvas.LEFT_SMALL_STYLE_CLASS, "left-small");
+        encodeTabSection(context, offCanvas, writer, OffCanvas.LEFT_TAB_BAR_SECTION, "tab-left");
     }
 
     protected void encodeMiddleTabMenu(FacesContext context, OffCanvas offCanvas, ResponseWriter writer) throws IOException {
-        encodeTabSection(context, offCanvas, writer, OffCanvas.MIDDLE_TAB_BAR_SECTION, "middle");
+        encodeTabSection(context, offCanvas, writer, OffCanvas.MIDDLE_TAB_BAR_SECTION, "tab-middle");
     }
 
     protected void encodeRightTabMenu(FacesContext context, OffCanvas offCanvas, ResponseWriter writer) throws IOException {
-        encodeTabSection(context, offCanvas, writer, OffCanvas.RIGHT_SMALL_STYLE_CLASS, "right-small");
+        encodeTabSection(context, offCanvas, writer, OffCanvas.RIGHT_TAB_BAR_SECTION_STYLE_CLASS, "tab-right");
     }
 
     protected void encodeCanvasEnd(FacesContext context, OffCanvas offCanvas, ResponseWriter writer) throws IOException {
@@ -104,11 +104,11 @@ public class OffCanvasRenderer extends Renderer {
             String styleClass,
             String facetName) throws IOException {
         UIComponent facet = offCanvas.getFacet(facetName);
-        if (facetName != null) {
-            writer.startElement("section", facet);
+        if (facet != null) {
+            writer.startElement("div", facet);
             writer.writeAttribute("class", styleClass, null);
             facet.encodeAll(context);
-            writer.endElement("section");
+            writer.endElement("div");
         }
     }
 }
