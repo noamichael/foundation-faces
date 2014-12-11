@@ -41,7 +41,7 @@
                 org.foundationfaces.component.Joyride
             </component-type>
             <renderer-type>
-                org.foundationfaces.component.renderer.JoyridelRenderer
+                org.foundationfaces.component.renderer.JoyrideRenderer
             </renderer-type>
         </component>
     </tag>
@@ -327,5 +327,29 @@
             <required>true</required>
             <type>java.lang.String</type>
         </attribute>
-    </tag>                                          
+    </tag> 
+    <tag>
+        <tag-name>commandButton</tag-name>
+        <description>Renders a foundation Command Button</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.CommandButton
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.CommandButtonRenderer
+            </renderer-type>
+        </component>
+    </tag>   
+     <tag>
+        <tag-name>switch</tag-name>
+        <description>Renders a foundation switch (select boolean)</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.SelectBoolean
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.SelectBooleanRenderer
+            </renderer-type>
+        </component>
+    </tag>                                         
 </facelet-taglib>

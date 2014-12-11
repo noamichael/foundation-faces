@@ -48,6 +48,10 @@ public class JoyrideStopRenderer extends Renderer {
         if(!StringUtil.isNullOrEmpty(dataPrevText)){
             writer.writeAttribute("data-prev-text", dataPrevText, null);
         }
+        String dataButton = stop.getDataButton();
+        if(!StringUtil.isNullOrEmpty(dataButton)){
+            writer.writeAttribute("data-button", dataButton, null);
+        }
         String dataOptions = stop.buildDataOptionString();
         if(!StringUtil.isNullOrEmpty(dataOptions)){
             writer.writeAttribute("data-options", dataOptions, null);

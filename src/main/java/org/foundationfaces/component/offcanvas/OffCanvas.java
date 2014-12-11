@@ -41,6 +41,16 @@ public class OffCanvas extends UIPanel implements Styled {
     private String styleClass;
     private String style;
 
+    @Override
+    public String getFamily() {
+        return Foundation.COMPONENT_FAMILY;
+    }
+
+    @Override
+    public String getRendererType() {
+        return MY_RENDERER_TYPE;
+    }
+
     /**
      * @return the header
      */

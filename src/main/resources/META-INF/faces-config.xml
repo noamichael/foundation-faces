@@ -15,9 +15,13 @@
         <component-type>org.foundationfaces.component.Joyride</component-type>
         <component-class>org.foundationfaces.component.joyride.Joyride</component-class>
     </component>
-     <component>
+    <component>
         <component-type>org.foundationfaces.component.JoyrideStop</component-type>
         <component-class>org.foundationfaces.component.joyride.JoyrideStop</component-class>
+    </component>
+    <component>
+        <component-type>org.foundationfaces.component.OffCanvas</component-type>
+        <component-class>org.foundationfaces.component.offcanvas.OffCanvas</component-class>
     </component>
     <render-kit>
         <renderer>
@@ -29,6 +33,11 @@
             <component-family>org.foundationfaces.component</component-family>
             <renderer-class>org.foundationfaces.component.panel.PanelRenderer</renderer-class>
             <renderer-type>org.foundationfaces.component.renderer.PanelRenderer</renderer-type>
+        </renderer>
+        <renderer>
+            <component-family>org.foundationfaces.component</component-family>
+            <renderer-class>org.foundationfaces.component.offcanvas.OffCanvasRenderer</renderer-class>
+            <renderer-type>org.foundationfaces.component.renderer.OffCanvasRenderer</renderer-type>
         </renderer>
         <renderer>
             <component-family>org.foundationfaces.component</component-family>

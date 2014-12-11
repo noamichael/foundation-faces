@@ -1,28 +1,28 @@
-package org.foundationfaces.component.joyride;
+package org.foundationfaces.component.select;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
-import javax.faces.component.UIPanel;
+import javax.faces.component.html.HtmlSelectBooleanCheckbox;
 import org.foundationfaces.component.Foundation;
 
 /**
  *
  * @author Michael
  */
-@FacesComponent(Joyride.MY_COMPONENT_TYPE)
+@FacesComponent(SelectBoolean.MY_COMPONENT_TYPE)
 @ResourceDependencies({
     @ResourceDependency(name = "/foundationfaces/css/foundation.min.css"),
     @ResourceDependency(name = "/foundationfaces/css/normalize.css"),
     @ResourceDependency(name = "/foundationfaces/js/vendor/jquery.js"),
     @ResourceDependency(name = "/foundationfaces/js/foundation.min.js")
 })
-public class Joyride extends UIPanel {
+public class SelectBoolean extends HtmlSelectBooleanCheckbox {
 
-    public static final String MY_COMPONENT_TYPE = Foundation.COMPONENT_FAMILY + ".Joyride";
-    public static final String MY_RENDERER_TYPE = Foundation.RENDERER_TYPE + ".JoyrideRenderer";
+    public static final String MY_COMPONENT_TYPE = Foundation.COMPONENT_FAMILY + ".SelectBoolean";
+    public static final String MY_RENDERER_TYPE = Foundation.RENDERER_TYPE + ".SelectBooleanRenderer";
 
-    public static final String STYLE_CLASS = "joyride-list";
+    public static final String STYLE_CLASS = "switch";
 
     @Override
     public String getFamily() {
@@ -34,4 +34,8 @@ public class Joyride extends UIPanel {
         return MY_RENDERER_TYPE;
     }
 
+    protected enum PropertyKeys {
+
+        label;
+    }
 }

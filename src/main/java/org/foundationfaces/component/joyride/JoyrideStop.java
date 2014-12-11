@@ -22,6 +22,16 @@ public class JoyrideStop extends UIOutput {
     public static final String MY_COMPONENT_TYPE = Foundation.COMPONENT_FAMILY + ".JoyrideStop";
     public static final String MY_RENDERER_TYPE = Foundation.RENDERER_TYPE + ".JoyrideStopRenderer";
 
+    @Override
+    public String getFamily() {
+        return Foundation.COMPONENT_FAMILY;
+    }
+
+    @Override
+    public String getRendererType() {
+        return MY_RENDERER_TYPE;
+    }
+
     /**
      * @return the expose
      */
