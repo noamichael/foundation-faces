@@ -37,13 +37,9 @@ public class SelectRadioRenderer extends WrappedRenderer {
         ResponseWriter writer = context.getResponseWriter();
         SelectRadio select = (SelectRadio) component;
         getDefaultRenderer(context).encodeEnd(context, component);
-        String label = select.getLabel();
-        if (!StringUtil.isNullOrEmpty(label)) {
-            writer.startElement("label", null);
-            writer.writeAttribute("for", select.getClientId(context), null);
-            writer.write(label);
-            writer.endElement("label");
-        }
+        writer.startElement("label", null);
+        writer.writeAttribute("for", select.getClientId(context), null);
+        writer.endElement("label");
         writer.endElement("div");
     }
 

@@ -37,13 +37,9 @@ public class SelectBooleanRenderer extends WrappedRenderer {
         ResponseWriter writer = context.getResponseWriter();
         SelectBoolean select = (SelectBoolean) component;
         getDefaultRenderer(context).encodeEnd(context, component);
-        String label = select.getLabel();
-        if (!StringUtil.isNullOrEmpty(label)) {
-            writer.startElement("label", null);
-            writer.writeAttribute("for", select.getClientId(context), null);
-            writer.write(label);
-            writer.endElement("label");
-        }
+        writer.startElement("label", null);
+        writer.writeAttribute("for", select.getClientId(context), null);
+        writer.endElement("label");
         writer.endElement("div");
     }
 
