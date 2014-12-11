@@ -104,7 +104,7 @@
             <required>false</required>
             <type>java.lang.String</type>
         </attribute>
-       <attribute>
+        <attribute>
             <description><![CDATA['top' or 'bottom' in relation to parent]]></description>
             <name>tipLocation</name>
             <required>false</required>
@@ -340,7 +340,7 @@
             </renderer-type>
         </component>
     </tag>   
-     <tag>
+    <tag>
         <tag-name>switch</tag-name>
         <description>Renders a foundation switch (select boolean)</description>
         <component>
@@ -351,5 +351,17 @@
                 org.foundationfaces.component.renderer.SelectBooleanRenderer
             </renderer-type>
         </component>
-    </tag>                                         
+    </tag> 
+    <tag>
+        <tag-name>radio</tag-name>
+        <description>Renders a foundation radio switch (select radio)</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.SelectRadio
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.SelectRadioRenderer
+            </renderer-type>
+        </component>
+    </tag>                                          
 </facelet-taglib>

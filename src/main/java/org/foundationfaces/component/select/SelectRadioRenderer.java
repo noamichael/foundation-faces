@@ -2,7 +2,7 @@ package org.foundationfaces.component.select;
 
 import java.io.IOException;
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlSelectBooleanCheckbox;
+import javax.faces.component.html.HtmlSelectOneRadio;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
@@ -15,13 +15,13 @@ import org.foundationfaces.util.StringUtil;
  *
  * @author Michael
  */
-@FacesRenderer(componentFamily = Foundation.COMPONENT_FAMILY, rendererType = SelectBoolean.MY_RENDERER_TYPE)
-public class SelectBooleanRenderer extends WrappedRenderer {
+@FacesRenderer(componentFamily = Foundation.COMPONENT_FAMILY, rendererType = SelectRadio.MY_RENDERER_TYPE)
+public class SelectRadioRenderer extends WrappedRenderer {
 
     @Override
     public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
-        SelectBoolean select = (SelectBoolean) component;
+        SelectRadio select = (SelectRadio) component;
         writer.startElement("div", component);
         String containerStyleClass = select.getContainerStyleClass();
         if (!StringUtil.isNullOrEmpty(containerStyleClass)) {
@@ -35,7 +35,7 @@ public class SelectBooleanRenderer extends WrappedRenderer {
     @Override
     public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
-        SelectBoolean select = (SelectBoolean) component;
+        SelectRadio select = (SelectRadio) component;
         getDefaultRenderer(context).encodeEnd(context, component);
         String label = select.getLabel();
         if (!StringUtil.isNullOrEmpty(label)) {
@@ -50,8 +50,8 @@ public class SelectBooleanRenderer extends WrappedRenderer {
     @Override
     protected Renderer getDefaultRenderer(FacesContext context) {
         return context.getRenderKit()
-                .getRenderer(HtmlSelectBooleanCheckbox.COMPONENT_FAMILY,
-                        "javax.faces.Checkbox");
+                .getRenderer(HtmlSelectOneRadio.COMPONENT_FAMILY,
+                        "javax.faces.Radio");
     }
 
 }

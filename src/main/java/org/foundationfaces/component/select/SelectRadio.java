@@ -3,24 +3,24 @@ package org.foundationfaces.component.select;
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
-import javax.faces.component.html.HtmlSelectBooleanCheckbox;
+import javax.faces.component.html.HtmlSelectOneRadio;
 import org.foundationfaces.component.Foundation;
 
 /**
  *
  * @author Michael
  */
-@FacesComponent(SelectBoolean.MY_COMPONENT_TYPE)
+@FacesComponent(SelectRadio.MY_COMPONENT_TYPE)
 @ResourceDependencies({
     @ResourceDependency(name = "/foundationfaces/css/foundation.min.css"),
     @ResourceDependency(name = "/foundationfaces/css/normalize.css"),
     @ResourceDependency(name = "/foundationfaces/js/vendor/jquery.js"),
     @ResourceDependency(name = "/foundationfaces/js/foundation.min.js")
 })
-public class SelectBoolean extends HtmlSelectBooleanCheckbox {
+public class SelectRadio extends HtmlSelectOneRadio {
 
-    public static final String MY_COMPONENT_TYPE = Foundation.COMPONENT_FAMILY + ".SelectBoolean";
-    public static final String MY_RENDERER_TYPE = Foundation.RENDERER_TYPE + ".SelectBooleanRenderer";
+    public static final String MY_COMPONENT_TYPE = Foundation.COMPONENT_FAMILY + ".SelectRadio";
+    public static final String MY_RENDERER_TYPE = Foundation.RENDERER_TYPE + ".SelectRadioRenderer";
 
     public static final String STYLE_CLASS = "switch";
 
@@ -52,4 +52,5 @@ public class SelectBoolean extends HtmlSelectBooleanCheckbox {
 
         containerStyleClass;
     }
+
 }
