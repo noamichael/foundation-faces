@@ -26,9 +26,15 @@ public class SelectRadioRenderer extends Renderer {
         SelectRadio select = (SelectRadio) component;
         List<SelectItem> selectItems = ComponentUtil.getSelectItems(select);
         int i = 0;
+        /**
+         * The row containing the radio buttons
+         */
         writer.startElement("div", component);
         writer.writeAttribute("class", "row", null);
         writer.writeAttribute("id", select.getClientId(context), null);
+        /**
+         * The individual radio buttons
+         */
         for (SelectItem item : selectItems) {
             encodeSingleRadio(context,
                     select,
@@ -41,6 +47,17 @@ public class SelectRadioRenderer extends Renderer {
 
     }
 
+    /**
+     * Encodes a single radio button
+     *
+     * @param context
+     * @param select The concrete component
+     * @param selectItem The select item, containing the item value and
+     * description
+     * @param i The index of the select item (used to generate id)
+     * @param writer
+     * @throws IOException
+     */
     protected void encodeSingleRadio(FacesContext context,
             SelectRadio select,
             SelectItem selectItem,
@@ -77,7 +94,7 @@ public class SelectRadioRenderer extends Renderer {
             }
             writer.writeAttribute("type", "radio", null);
             writer.writeAttribute("id", clientId + ":" + i, clientId);
-            writer.writeAttribute("value", String.valueOf(selectItem.getValue()), null);
+            writer.writeAttribute("value", ComponentUtil.getValueAsString(context, select), null);
             ComponentUtil.encodeEvents(context, select, select, writer);
             if (!styleClass.isEmpty()) {
                 writer.writeAttribute("class", styleClass, null);

@@ -3,8 +3,10 @@ package org.foundationfaces.component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UISelectItem;
 import javax.faces.component.UISelectItems;
@@ -13,6 +15,7 @@ import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 import org.foundationfaces.component.select.ExtendedSelectItem;
 import org.foundationfaces.util.StringUtil;
@@ -22,6 +25,28 @@ import org.foundationfaces.util.StringUtil;
  * @author Michael
  */
 public final class ComponentUtil {
+
+    /**
+     * Returns the HTML event name for the given common JSF identifier.
+     */
+    public final static Map<String, String> HTML_JS_EVENT_NAMES = new HashMap();
+
+    static {
+        HTML_JS_EVENT_NAMES.put("blur", "onblur");
+        HTML_JS_EVENT_NAMES.put("change", "onchange");
+        HTML_JS_EVENT_NAMES.put("valuechange", "onchange");
+        HTML_JS_EVENT_NAMES.put("focus", "onfocus");
+        HTML_JS_EVENT_NAMES.put("click", "onclick");
+        HTML_JS_EVENT_NAMES.put("dblclick", "ondblclick");
+        HTML_JS_EVENT_NAMES.put("keydown", "onkeydown");
+        HTML_JS_EVENT_NAMES.put("keypress", "onkeypress");
+        HTML_JS_EVENT_NAMES.put("keyup", "onkeyup");
+        HTML_JS_EVENT_NAMES.put("mousedown", "onmousedown");
+        HTML_JS_EVENT_NAMES.put("mousemove", "onmousemove");
+        HTML_JS_EVENT_NAMES.put("mouseout", "onmouseout");
+        HTML_JS_EVENT_NAMES.put("mouseover", "onmouseover");
+        HTML_JS_EVENT_NAMES.put("mouseup", "onmouseup");
+    }
 
     public static void encodeStyledComponent(Styled styled, String defaultStyleClass, ResponseWriter writer) throws IOException {
         String style = styled.getStyle();
@@ -37,9 +62,11 @@ public final class ComponentUtil {
     }
 
     /**
-     * Finds the {@link SelectItem} for a given component via the f:selectItem
-     * tag, or the f:selectItems tag. The f:selectItems tag can use a map or a
-     * collection.
+     * Finds the {@link SelectItem SelectItem(s)} for a given component via the
+     * f:selectItem tag, or the f:selectItems tag. The f:selectItems tag can use
+     * a map or a collection of items. If a collection is used, it must be a
+     * collection of {@link SelectItem}. If a map is used, the key will be the
+     * description.
      *
      * @param component
      * @return
@@ -66,10 +93,27 @@ public final class ComponentUtil {
         return selectItems;
     }
 
+    public static <T extends UIComponent & EditableValueHolder> String getValueAsString(FacesContext context, T component) {
+        Converter converter = component.getConverter();
+        String valueToEncode;
+        if (converter != null) {
+            valueToEncode = converter.getAsString(context, component, component.getValue());
+        } else {
+            valueToEncode = String.valueOf(component.getValue());
+        }
+        return valueToEncode;
+    }
+
     /**
-     * Encodes the {@link ClientBehavior} events for a given
-     * {@link ClientBehaviorHolder}. Does not encode the event if the event is
-     * not found by {@link getEventAttributeName(java.lang.String)}
+     * Encodes the {@link ClientBehavior} the default events for a given
+     * {@link ClientBehaviorHolder}.
+     *
+     * <h3>The events that are encode are:</h3>
+     * <p>
+     * {@code "onblur", "onchange", "onchange", "onfocus", "onclick", "ondblclick",
+     * "onkeydown", "onkeypress", "onkeyup", "onmousedown", "onmousemove",
+     * "onmouseout", "onmouseover", "onmouseup"}
+     * </p>
      *
      * @param context
      * @param holder The holder of the events
@@ -81,59 +125,32 @@ public final class ComponentUtil {
             ClientBehaviorHolder holder,
             UIComponent component,
             ResponseWriter writer) throws IOException {
-        for (Map.Entry<String, List<ClientBehavior>> eventEntries : holder.getClientBehaviors().entrySet()) {
-            for (ClientBehavior behavior : eventEntries.getValue()) {
-                ClientBehaviorContext clientBehaviorContext
-                        = ClientBehaviorContext.createClientBehaviorContext(context,
-                                component, eventEntries.getKey(), component.getClientId(context), null);
-                StringBuilder builder = new StringBuilder();
-                builder.append(behavior.getScript(clientBehaviorContext));
-                builder.append(';');
-                String htmlAttributeName = getEventAttributeName(eventEntries.getKey());
-                if (htmlAttributeName != null) {
-                    writer.writeAttribute(htmlAttributeName, builder.toString(), null);
+        Map<String, List<ClientBehavior>> componentBehaviorMap = holder.getClientBehaviors();
+        for (Map.Entry<String, String> events : HTML_JS_EVENT_NAMES.entrySet()) {
+            String jsfEventName = events.getKey();
+            String htmlAttributeName = events.getValue();
+            StringBuilder builder = new StringBuilder();
+            if (componentBehaviorMap.containsKey(jsfEventName)) {
+                for (ClientBehavior behavior : componentBehaviorMap.get(jsfEventName)) {
+                    ClientBehaviorContext clientBehaviorContext
+                            = ClientBehaviorContext.createClientBehaviorContext(context,
+                                    component, jsfEventName, component.getClientId(context), null);
+                    String script = behavior.getScript(clientBehaviorContext);
+                    if (!StringUtil.isNullOrEmpty(script)) {
+                        builder.append(script);
+                        builder.append(';');
+                    }
                 }
             }
-        }
-    }
-
-    /**
-     * Returns the HTML event name for the given common JSF identifier.
-     *
-     * @param event The name of the JSF event
-     * @return The converted event name (if found) or else null
-     */
-    public static String getEventAttributeName(String event) {
-        switch (event.trim().toLowerCase()) {
-            case "blur":
-                return "onblur";
-            case "change":
-            case "valueChange":
-                return "onchange";
-            case "focus":
-                return "onfocus";
-            case "click":
-                return "onclick";
-            case "dbclick":
-                return "ondblclick";
-            case "keydown":
-                return "onkeydown";
-            case "keypress":
-                return "onkeypress";
-            case "keyup":
-                return "onkeyup";
-            case "mousedown":
-                return "onmousedown";
-            case "mousemove":
-                return "onmousemove";
-            case "mouseout":
-                return "onmouseout";
-            case "mouseover":
-                return "onmouseover";
-            case "mouseup":
-                return "onmouseup";
-            default:
-                return null;
+            String additionalBehavior = (String) component.getAttributes().get(htmlAttributeName);
+            if (!StringUtil.isNullOrEmpty(additionalBehavior)) {
+                builder.append(additionalBehavior);
+                builder.append(";");
+            }
+            String script = builder.toString();
+            if (htmlAttributeName != null && !script.isEmpty()) {
+                writer.writeAttribute(htmlAttributeName, builder.toString(), null);
+            }
         }
     }
 }
