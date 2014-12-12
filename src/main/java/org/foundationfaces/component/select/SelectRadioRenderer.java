@@ -3,8 +3,6 @@ package org.foundationfaces.component.select;
 import java.io.IOException;
 import java.util.List;
 import javax.faces.component.UIComponent;
-import javax.faces.component.behavior.ClientBehavior;
-import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.Converter;
@@ -52,8 +50,25 @@ public class SelectRadioRenderer extends Renderer {
             String clientId = select.getClientId(context);
             String styleClass = select.getStyleClass();
             styleClass = StringUtil.isNullOrEmpty(styleClass) ? "" : styleClass;
+            /**
+             * Container
+             */
             writer.startElement("div", null);
-            writer.writeAttribute("class", select.getColumnStyleClasses() + SelectRadio.STYLE_CLASS, null);
+            writer.writeAttribute("class", select.getColumnStyleClasses(), null);
+            /**
+             * Label
+             */
+            writer.startElement("span", null);
+            writer.writeText(selectItem.getLabel(), null);
+            writer.endElement("span");
+            /**
+             * Switch
+             */
+            writer.startElement("div", null);
+            writer.writeAttribute("class", SelectRadio.STYLE_CLASS, null);
+            /**
+             * Input
+             */
             writer.startElement("input", null);
             writer.writeAttribute("name", clientId, null);
             Object value = select.getValue();
@@ -63,30 +78,19 @@ public class SelectRadioRenderer extends Renderer {
             writer.writeAttribute("type", "radio", null);
             writer.writeAttribute("id", clientId + ":" + i, clientId);
             writer.writeAttribute("value", String.valueOf(selectItem.getValue()), null);
-            encodeEvents(context, select, writer);
-            writer.writeAttribute("class", styleClass, null);
+            ComponentUtil.encodeEvents(context, select, select, writer);
+            if (!styleClass.isEmpty()) {
+                writer.writeAttribute("class", styleClass, null);
+            }
+            /**
+             * Label (Actual slider)
+             */
             writer.endElement("input");
             writer.startElement("label", null);
             writer.writeAttribute("for", clientId + ":" + i, null);
             writer.endElement("label");
-            writer.endElement("div");
-        }
-    }
-
-    protected void encodeEvents(FacesContext context,
-            SelectRadio select,
-            ResponseWriter writer) throws IOException {
-        List<ClientBehavior> changeBehaviors = select.getClientBehaviors().get("change");
-        if (changeBehaviors != null && !changeBehaviors.isEmpty()) {
-            ClientBehaviorContext clientBehaviorContext
-                    = ClientBehaviorContext.createClientBehaviorContext(context,
-                            select, "change", select.getClientId(context), null);
-            StringBuilder builder = new StringBuilder();
-            for (ClientBehavior behavior : changeBehaviors) {
-                builder.append(behavior.getScript(clientBehaviorContext));
-                builder.append(';');
-            }
-            writer.writeAttribute("onChange", builder.toString(), null);
+            writer.endElement("div");//switch div
+            writer.endElement("div");//responsive container
         }
     }
 

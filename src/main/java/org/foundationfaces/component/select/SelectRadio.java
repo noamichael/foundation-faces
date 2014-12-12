@@ -53,7 +53,7 @@ public class SelectRadio extends HtmlSelectOneRadio {
      * @return the small
      */
     public String getSmall() {
-        return (String) getStateHelper().eval(PropertyKeys.small, "2");
+        return (String) getStateHelper().eval(PropertyKeys.small, "6");
     }
 
     /**
@@ -81,7 +81,7 @@ public class SelectRadio extends HtmlSelectOneRadio {
      * @return the large
      */
     public String getLarge() {
-        return (String) getStateHelper().eval(PropertyKeys.large, "6");
+        return (String) getStateHelper().eval(PropertyKeys.large, "2");
     }
 
     /**
