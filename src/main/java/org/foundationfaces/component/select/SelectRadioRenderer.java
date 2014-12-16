@@ -94,8 +94,8 @@ public class SelectRadioRenderer extends Renderer {
             }
             writer.writeAttribute("type", "radio", null);
             writer.writeAttribute("id", clientId + ":" + i, clientId);
-            writer.writeAttribute("value", ComponentUtil.getValueAsString(context, select), null);
-            ComponentUtil.encodeEvents(context, select, select, writer);
+            writer.writeAttribute("value", ComponentUtil.getValueAsString(context, select, selectItem.getValue()), null);
+            ComponentUtil.encodeEvents(context, select, writer);
             if (!styleClass.isEmpty()) {
                 writer.writeAttribute("class", styleClass, null);
             }

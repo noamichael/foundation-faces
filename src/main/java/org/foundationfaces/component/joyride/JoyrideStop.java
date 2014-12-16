@@ -36,7 +36,7 @@ public class JoyrideStop extends UIOutput {
      * @return the expose
      */
     public boolean isExpose() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.expose);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.expose);
     }
 
     /**
@@ -50,7 +50,7 @@ public class JoyrideStop extends UIOutput {
      * @return the modal
      */
     public boolean isModal() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.modal);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.modal);
     }
 
     /**
@@ -64,7 +64,7 @@ public class JoyrideStop extends UIOutput {
      * @return the keyboard
      */
     public boolean isKeyboard() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.keyboard);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.keyboard);
     }
 
     /**
@@ -78,7 +78,7 @@ public class JoyrideStop extends UIOutput {
      * @return the tipLocation
      */
     public String getTipLocation() {
-        return (String) getStateHelper().get(OptionPropertyKeys.tipLocation);
+        return (String) getStateHelper().eval(OptionPropertyKeys.tipLocation);
     }
 
     /**
@@ -92,7 +92,7 @@ public class JoyrideStop extends UIOutput {
      * @return the nubPosition
      */
     public String getNubPosition() {
-        return (String) getStateHelper().get(OptionPropertyKeys.nubPosition);
+        return (String) getStateHelper().eval(OptionPropertyKeys.nubPosition);
     }
 
     /**
@@ -106,7 +106,7 @@ public class JoyrideStop extends UIOutput {
      * @return the scrollSpeed
      */
     public int getScrollSpeed() {
-        return (int) getStateHelper().get(OptionPropertyKeys.scrollSpeed);
+        return (int) getStateHelper().eval(OptionPropertyKeys.scrollSpeed);
     }
 
     /**
@@ -120,7 +120,7 @@ public class JoyrideStop extends UIOutput {
      * @return the scrollAnimation
      */
     public String getScrollAnimation() {
-        return (String) getStateHelper().get(OptionPropertyKeys.scrollAnimation);
+        return (String) getStateHelper().eval(OptionPropertyKeys.scrollAnimation);
     }
 
     /**
@@ -134,7 +134,7 @@ public class JoyrideStop extends UIOutput {
      * @return the timer
      */
     public int getTimer() {
-        return (int) getStateHelper().get(OptionPropertyKeys.timer);
+        return (int) getStateHelper().eval(OptionPropertyKeys.timer);
     }
 
     /**
@@ -148,7 +148,7 @@ public class JoyrideStop extends UIOutput {
      * @return the startTimerOnClick
      */
     public boolean isStartTimerOnClick() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.startTimerOnClick);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.startTimerOnClick);
     }
 
     /**
@@ -162,7 +162,7 @@ public class JoyrideStop extends UIOutput {
      * @return the startOffset
      */
     public int getStartOffset() {
-        return (int) getStateHelper().get(OptionPropertyKeys.startOffset);
+        return (int) getStateHelper().eval(OptionPropertyKeys.startOffset);
     }
 
     /**
@@ -176,7 +176,7 @@ public class JoyrideStop extends UIOutput {
      * @return the nextButton
      */
     public boolean isNextButton() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.nextButton);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.nextButton);
     }
 
     /**
@@ -190,7 +190,7 @@ public class JoyrideStop extends UIOutput {
      * @return the prevButton
      */
     public boolean isPrevButton() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.prevButton);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.prevButton);
     }
 
     /**
@@ -204,7 +204,7 @@ public class JoyrideStop extends UIOutput {
      * @return the tipAnimation
      */
     public String getTipAnimation() {
-        return (String) getStateHelper().get(OptionPropertyKeys.tipAnimation);
+        return (String) getStateHelper().eval(OptionPropertyKeys.tipAnimation);
     }
 
     /**
@@ -218,7 +218,7 @@ public class JoyrideStop extends UIOutput {
      * @return the tipAnimationFadeSpeed
      */
     public int getTipAnimationFadeSpeed() {
-        return (int) getStateHelper().get(OptionPropertyKeys.tipAnimationFadeSpeed);
+        return (int) getStateHelper().eval(OptionPropertyKeys.tipAnimationFadeSpeed);
     }
 
     /**
@@ -232,7 +232,7 @@ public class JoyrideStop extends UIOutput {
      * @return the cookieMonster
      */
     public boolean isCookieMonster() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.cookieMonster);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.cookieMonster);
     }
 
     /**
@@ -246,7 +246,7 @@ public class JoyrideStop extends UIOutput {
      * @return the cookieName
      */
     public String getCookieName() {
-        return (String) getStateHelper().get(OptionPropertyKeys.cookieName);
+        return (String) getStateHelper().eval(OptionPropertyKeys.cookieName);
     }
 
     /**
@@ -260,7 +260,7 @@ public class JoyrideStop extends UIOutput {
      * @return the cookieDomain
      */
     public boolean isCookieDomain() {
-        return (boolean) getStateHelper().get(OptionPropertyKeys.cookieDomain);
+        return (boolean) getStateHelper().eval(OptionPropertyKeys.cookieDomain);
     }
 
     /**
@@ -274,7 +274,7 @@ public class JoyrideStop extends UIOutput {
      * @return the cookieExpires
      */
     public int getCookieExpires() {
-        return (int) getStateHelper().get(OptionPropertyKeys.cookieExpires);
+        return (int) getStateHelper().eval(OptionPropertyKeys.cookieExpires);
     }
 
     /**
@@ -288,7 +288,7 @@ public class JoyrideStop extends UIOutput {
      * @return the tipContainer
      */
     public String getTipContainer() {
-        return (String) getStateHelper().get(OptionPropertyKeys.tipContainer);
+        return (String) getStateHelper().eval(OptionPropertyKeys.tipContainer);
     }
 
     /**
@@ -302,7 +302,7 @@ public class JoyrideStop extends UIOutput {
      * @return the dataId
      */
     public String getDataId() {
-        return (String) getStateHelper().get(PropertyKeys.dataId);
+        return (String) getStateHelper().eval(PropertyKeys.dataId);
     }
 
     /**
@@ -316,7 +316,7 @@ public class JoyrideStop extends UIOutput {
      * @return the dataButton
      */
     public String getDataButton() {
-        return (String) getStateHelper().get(PropertyKeys.dataButton);
+        return (String) getStateHelper().eval(PropertyKeys.dataButton);
     }
 
     /**
@@ -330,7 +330,7 @@ public class JoyrideStop extends UIOutput {
      * @return the dataPrevText
      */
     public String getDataPrevText() {
-        return (String) getStateHelper().get(PropertyKeys.dataPrevText);
+        return (String) getStateHelper().eval(PropertyKeys.dataPrevText);
     }
 
     /**
@@ -344,7 +344,7 @@ public class JoyrideStop extends UIOutput {
      * @return the dataClass
      */
     public String getDataClass() {
-        return (String) getStateHelper().get(PropertyKeys.dataClass);
+        return (String) getStateHelper().eval(PropertyKeys.dataClass);
     }
 
     /**
@@ -358,7 +358,7 @@ public class JoyrideStop extends UIOutput {
      * @return the dataClass
      */
     public String getDataText() {
-        return (String) getStateHelper().get(PropertyKeys.dataText);
+        return (String) getStateHelper().eval(PropertyKeys.dataText);
     }
 
     /**

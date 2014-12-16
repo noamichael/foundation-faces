@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIForm;
 import javax.faces.component.UISelectItem;
 import javax.faces.component.UISelectItems;
 import javax.faces.component.behavior.ClientBehavior;
@@ -61,6 +62,24 @@ public final class ComponentUtil {
         }
     }
 
+    public static UIForm getForm(UIComponent component) {
+        if (component == null) {
+            return null;
+        }
+        if (component instanceof UIForm) {
+            return (UIForm) component;
+        }
+        UIForm form = null;
+        UIComponent parent = component.getParent();
+        while (parent != null && !(parent instanceof UIForm)) {
+            parent = parent.getParent();
+        }
+        if(parent != null){
+            form = (UIForm) parent;
+        }
+        return form;
+    }
+
     /**
      * Finds the {@link SelectItem SelectItem(s)} for a given component via the
      * f:selectItem tag, or the f:selectItems tag. The f:selectItems tag can use
@@ -93,11 +112,11 @@ public final class ComponentUtil {
         return selectItems;
     }
 
-    public static <T extends UIComponent & EditableValueHolder> String getValueAsString(FacesContext context, T component) {
+    public static <T extends UIComponent & EditableValueHolder> String getValueAsString(FacesContext context, T component, Object value) {
         Converter converter = component.getConverter();
         String valueToEncode;
         if (converter != null) {
-            valueToEncode = converter.getAsString(context, component, component.getValue());
+            valueToEncode = converter.getAsString(context, component, value);
         } else {
             valueToEncode = String.valueOf(component.getValue());
         }
@@ -115,17 +134,16 @@ public final class ComponentUtil {
      * "onmouseout", "onmouseover", "onmouseup"}
      * </p>
      *
+     * @param <T>
      * @param context
-     * @param holder The holder of the events
      * @param component The component reference
      * @param writer The writer to add to the view
      * @throws IOException if an I/O exception occurs
      */
-    public static void encodeEvents(FacesContext context,
-            ClientBehaviorHolder holder,
-            UIComponent component,
+    public static <T extends UIComponent & ClientBehaviorHolder> void encodeEvents(FacesContext context,
+            T component,
             ResponseWriter writer) throws IOException {
-        Map<String, List<ClientBehavior>> componentBehaviorMap = holder.getClientBehaviors();
+        Map<String, List<ClientBehavior>> componentBehaviorMap = component.getClientBehaviors();
         for (Map.Entry<String, String> events : HTML_JS_EVENT_NAMES.entrySet()) {
             String jsfEventName = events.getKey();
             String htmlAttributeName = events.getValue();

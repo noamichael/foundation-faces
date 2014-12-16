@@ -363,5 +363,29 @@
                 org.foundationfaces.component.renderer.SelectRadioRenderer
             </renderer-type>
         </component>
-    </tag>                                          
+    </tag> 
+    <tag>
+        <tag-name>message</tag-name>
+        <description>Renders a foundation error message component</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.Message
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.MessageRenderer
+            </renderer-type>
+        </component>
+    </tag> 
+    <tag>
+        <tag-name>messages</tag-name>
+        <description>Renders a foundation error messages component</description>
+        <component>
+            <component-type>
+                org.foundationfaces.component.Messages
+            </component-type>
+            <renderer-type>
+                org.foundationfaces.component.renderer.MessagesRenderer
+            </renderer-type>
+        </component>
+    </tag>                                         
 </facelet-taglib>
