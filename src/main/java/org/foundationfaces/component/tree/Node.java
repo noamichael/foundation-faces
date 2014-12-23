@@ -12,19 +12,14 @@ public class Node<T> implements TreeNode<T> {
     private List<TreeNode<T>> children = new ArrayList();
     private TreeNode<T> parent;
     private String label;
-    private String outcome;
     private T data;
 
-
     @SuppressWarnings("LeakingThisInConstructor")
-    public Node(Node parent, String label, String outcome) {
+    public Node(Node parent, String label) {
         this.parent = parent;
         this.label = label;
-        this.outcome = outcome;
         this.parent.getChildren().add(this);
     }
-
-
 
     @Override
     public boolean isRoot() {
@@ -38,7 +33,7 @@ public class Node<T> implements TreeNode<T> {
 
     @Override
     public void setParent(TreeNode<T> parent) {
-       this.parent = parent;
+        this.parent = parent;
     }
 
     @Override
@@ -53,11 +48,27 @@ public class Node<T> implements TreeNode<T> {
 
     @Override
     public T getData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data;
     }
 
     @Override
     public void setData(T data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.data = data;
+    }
+
+    /**
+     * @return the label
+     */
+    @Override
+    public String getLabel() {
+        return label;
+    }
+
+    /**
+     * @param label the label to set
+     */
+    @Override
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

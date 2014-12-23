@@ -21,6 +21,10 @@ public interface TreeNode<T> extends Serializable {
     T getData();
 
     void setData(T data);
-    
-    public boolean isRoot();
+
+    boolean isRoot();
+
+    String getLabel();
+
+    void setLabel(String label);
 }
